@@ -1,0 +1,102 @@
+<div >
+  <h1>Project Details</h1>
+    <form [formGroup]="requestData" (ngSubmit)="submitRequest()" class="form-group">
+    <mat-form-field appearance="outline">
+      <mat-label>Project Name</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="requestName" required>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <input matInput  formControlName="status" value="backlog">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>SELECT USER ACCESS</mat-label>
+      <mat-select formControlName="users" multiple>
+        <mat-option *ngFor="let user of users" [value]="user">{{
+          user.userName | titlecase
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p></p>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project Description</mat-label>
+      <textarea matInput placeholder="Placeholder"  formControlName="description"></textarea>
+
+    </mat-form-field>
+
+
+    <mat-chip-list>
+      <mat-chip *ngFor="let task of tasks" (removed)="remove(task)">
+        {{task.taskName}}
+        <button matChipRemove >
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+
+
+<p></p>
+<form [formGroup]="taskData" (ngSubmit)="onSubmit()">
+  <h3>Task Details</h3>
+    <mat-form-field appearance="outline">
+        <mat-label>Task Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="taskName">
+ 
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="picker1" placeholder="Placeholder" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+
+         <mat-hint>MM/DD/YYYY</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="picker2" placeholder="Placeholder" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2    ></mat-datepicker>
+
+         <mat-hint>MM/DD/YYYY</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="status">
+
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Refernece Link</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="referenceLink">
+
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Depend On</mat-label>
+        <input matInput  placeholder="Placeholder" formControlName="dependOn">
+   
+      </mat-form-field> <mat-form-field appearance="outline">
+        <mat-label>Parent ID</mat-label>
+        <input matInput  placeholder="Placeholder" formControlName="parentId">
+   
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Task Description</mat-label>
+        <textarea matInput  placeholder="Placeholder" formControlName="taskDescription"></textarea>
+   
+      </mat-form-field> 
+      <button mat-stroked-button type="submit">New Task</button>
+    </form>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Close</button>
+      <button mat-button type="submit" [mat-dialog-close] (click)="openSnackBar()" cdkFocusInitial>Submit</button> 
+    </div>
+  </form>
+    
+</div>

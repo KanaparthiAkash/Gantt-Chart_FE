@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~jsgantt-improved/dist/jsgantt.css";
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.gtaskheading div,
+.gname div,
+.gtaskname div,
+.gres div,
+.gdur div,
+.gcomp div,
+.gstartdate div,
+.gplanstartdate div,
+.gplanenddate div,
+.gcost div,
+.genddate div {
+  white-space: nowrap;
+//   overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gmainleft {
+    // overflow: 
+    // flex: 0 0 50%;
+    // flex: 1 0 auto;
+     line-height: 1.43; 
+     width : 460px;
+}
